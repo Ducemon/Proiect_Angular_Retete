@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit) = "onAddItem(f)" #f="ngForm">
+      <div class="col-sm-5 form-group">
+        <label for="name">Denumire</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          name="name"
+          ngModel
+          required
+          >
+      </div>
+      <div class="col-sm-2 form-group">
+        <label for="quantity">Cantitate</label>
+        <input type="number" id="quantity" class="form-control"
+        name="quantity"
+        ngModel
+        required
+        [pattern]="'^[1-9]+[0-9]*$'">
+      </div>
+      <div class="row">
+      <div class="ol-sm-5 form-group">
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid" >{{editMode ? 'Modifica' : 'Adauga'}}</button>
+          <button class="btn btn-danger" type="button" (click)="onDelete()"
+          *ngIf="editMode">
+            Sterge Selectia</button>
+          <button class="btn btn-primary" type="button" (click)="onClear()" >Deselecteaza</button>
+
+
+      </div>
+      </div>
+    </form>
+  </div>
+</div>

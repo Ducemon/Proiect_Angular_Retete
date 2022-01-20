@@ -1,0 +1,88 @@
+<div class = "row">
+  <div class = "col-xs-12">
+    <form [formGroup]="recipeform" (ngSubmit)="onSubmit()">
+      <div class = "row">
+        <div class = "col-xs-12">
+          <button type="submit" class="btn btn-success"
+          [disabled]="!recipeform.valid">Salveaza</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Anlueaza</button>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <div class = "form-group">
+            <label for="name">Nume</label>
+            <input
+            type="text"
+            id="name"
+            formControlName = 'name'
+            class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <div class = "form-group">
+            <label for="imgPath">URL Imagine</label>
+            <input
+              type="text"
+              id="imgPath"
+              formControlName = "imgPath"
+              class="form-control"
+              #path>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <img [src]="path.value" class = "img-responsive">
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <div class = "form-group">
+            <label for="description"> Descriere</label>
+            <textarea
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName = 'description'
+              rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12" formArrayName="ingredients">
+            <div class="row"
+                 *ngFor="let ingctrl of controls, let ind = index"
+            [formGroupName]="ind">
+              <div class="col-xs-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName = 'name'>
+              </div>
+              <div class="col-xs-2">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName = 'quantity'>
+              </div>
+              <div class = "col-xs-2">
+                  <button type="button" class="btn btn-danger"
+                  (click)="onDeleteIngredient(ind)"> X </button>
+              </div>
+            </div>
+            <div class = "row">
+              <div class = "col-xs-12">
+                <button class="btn btn-success"
+                type = "button"
+                (click)="onAddIng()">Adauga ingredient</button>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

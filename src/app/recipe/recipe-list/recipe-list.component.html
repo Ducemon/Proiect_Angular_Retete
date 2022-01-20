@@ -1,0 +1,17 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNew()" >Reteta Noua</button>
+  </div>
+</div>
+
+<br>
+<h2>Retetele mele:</h2>
+<div class="row">
+  <div class="col-xm-12">
+    <app-recipe-item *ngFor="let repel of recipes; let i = index"
+                     [rep]="repel"
+                      [index]="i">
+    </app-recipe-item>
+  </div>
+</div>

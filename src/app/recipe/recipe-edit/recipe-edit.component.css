@@ -1,0 +1,11 @@
+button{
+  margin: 2px;
+}
+
+input.ng-touched.ng-invalid{
+  border: 1px solid red;
+}
+
+img{
+  max-height: 300px;
+}
